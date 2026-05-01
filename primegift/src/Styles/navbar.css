@@ -1,0 +1,189 @@
+/* ===== ROOT COLORS (COMMON FOR ALL BUTTONS) ===== */
+:root {
+  --primary-gradient: linear-gradient(135deg, #3b82f6, #2563eb);
+  --primary-gradient-hover: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ===== MENU BUTTON (SAME AS LOGIN/REGISTER) ===== */
+/* ===== COMMON BUTTON (ALL SAME COLOR) ===== */
+.menu-btn,
+.login-btn,
+.register-btn {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* ===== SIZES ===== */
+.menu-btn {
+  padding: 0.5rem 0.7rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-btn,
+.register-btn {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+}
+
+/* ===== HOVER SAME FOR ALL ===== */
+.menu-btn:hover,
+.login-btn:hover,
+.register-btn:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+/* ===== ACTIVE ===== */
+.menu-btn:active,
+.login-btn:active,
+.register-btn:active {
+  transform: scale(0.95);
+}
+/* ===== LOGO ===== */
+.logo-section {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #0f172a, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-section::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.logo-section:hover::after {
+  width: 100%;
+}
+
+/* ===== AUTH BUTTONS ===== */
+.auth-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* ===== LOGIN BUTTON ===== */
+.login-btn {
+  background: var(--primary-gradient);
+  border: none;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
+}
+
+.login-btn:hover {
+  background: var(--primary-gradient-hover);
+  transform: translateY(-2px);
+}
+
+.login-btn:active {
+  transform: scale(0.95);
+}
+
+/* ===== REGISTER BUTTON ===== */
+.register-btn {
+  background: var(--primary-gradient);
+  border: none;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
+}
+
+.register-btn:hover {
+  background: var(--primary-gradient-hover);
+  transform: translateY(-2px);
+}
+
+.register-btn:active {
+  transform: scale(0.95);
+}
+
+/* ===== SCROLL EFFECT ===== */
+.navbar.scrolled {
+  padding: 0.75rem 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .login-btn,
+  .register-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1rem;
+  }
+
+  .login-btn,
+  .register-btn {
+    padding: 0.35rem 0.75rem;
+  }
+}
