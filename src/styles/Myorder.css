@@ -1,0 +1,322 @@
+/* Myorder.css - Modern minimal changes, same colors */
+
+/* Layout */
+.app-layout {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+}
+
+.main-container {
+  display: flex;
+  min-height: calc(100vh - 70px);
+}
+
+.content-area {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Page Title - Same style */
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+}
+
+/* Order Card - Your original style with slight modern touch */
+.order-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.order-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Brand Row - Same */
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eef2ff;
+}
+
+.brand-row img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.brand-row h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* Info Rows - Same spacing */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.row span:first-child {
+  font-weight: 500;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.row span:last-child {
+  font-weight: 600;
+  color: #0f172a;
+  font-size: 0.875rem;
+}
+
+/* Status Colors - Your original colors */
+.status {
+  font-weight: 600;
+}
+
+.status.success {
+  color: #22c55e;
+}
+
+.status.failed {
+  color: #ef4444;
+}
+
+.status.processing {
+  color: #f97316;
+}
+
+/* Processing & Failed Messages - Your colors */
+.processing {
+  color: #f97316;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #fef3c7;
+}
+
+.failed {
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #fee2e2;
+}
+
+/* Voucher Card - Your original style refined */
+.voucher-list {
+  margin-top: 16px;
+}
+
+.voucher-card {
+  background: #f8fafc;
+  padding: 14px;
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.voucher-card:first-child {
+  margin-top: 8px;
+}
+
+.voucher-card:hover {
+  border-color: #cbd5e1;
+  background: #f1f5f9;
+}
+
+/* Voucher Code Styling */
+.voucher-code {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #1e293b;
+}
+
+/* PIN Row - Modernized */
+.pin-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  margin-top: 8px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.pin-row > span:first-child {
+  font-weight: 500;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.pin-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pin-value {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #1e293b;
+}
+
+/* PIN Button - Your green color but modernized */
+.pin-btn {
+  margin-left: 0;
+  padding: 4px 12px;
+  border: none;
+  background: #22c55e;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.pin-btn:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(34, 197, 94, 0.3);
+}
+
+.pin-btn:active {
+  transform: translateY(0);
+}
+
+/* Loading State - Modern minimal */
+.loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+.modern-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-wrapper p {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+/* Empty State - Modern minimal */
+.empty-state {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.empty-icon {
+  width: 64px;
+  height: 64px;
+  stroke: #94a3b8;
+  stroke-width: 1.5;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content-area {
+    padding: 1rem;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+  }
+  
+  .order-card {
+    padding: 16px;
+  }
+  
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .pin-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .pin-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .voucher-card {
+    padding: 12px;
+  }
+  
+  .pin-value {
+    font-size: 0.75rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .order-card,
+  .pin-btn,
+  .modern-spinner {
+    animation: none;
+    transition: none;
+  }
+  
+  .order-card:hover {
+    transform: none;
+  }
+  
+  .pin-btn:hover {
+    transform: none;
+  }
+}

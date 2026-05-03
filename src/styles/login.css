@@ -1,0 +1,313 @@
+/* Login.css - Fixed Proper Spacing */
+.login-app {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero Section - Reduced Height */
+.login-hero-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-hero-section::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 60%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(59,130,246,0) 70%);
+  transform: rotate(25deg);
+  pointer-events: none;
+}
+
+.login-hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 50%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, rgba(59,130,246,0) 70%);
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+
+.login-hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0;
+  background: linear-gradient(135deg, #ffffff, #94a3b8, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fadeInUp 0.6s ease;
+}
+
+/* Container & Card - Fixed Positioning */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 1rem;
+  flex: 1;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  padding: 3.5rem 2.5rem;   /* ⬅️ height increase via padding */
+  border-radius: 2rem;
+  width: 100%;
+  max-width: 440px;
+  min-height: 380px;        /* ⬅️ FIXED HEIGHT BOOST */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.6s ease 0.1s both;
+
+  display: flex;             /* ⬅️ center content */
+  flex-direction: column;
+justify-content: space-between;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+}
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;   /* 🔥 main fix */
+  height: 100%;                     /* important */
+}
+
+/* Input Fields */
+.login-input {
+  padding: 0.875rem 1.125rem;
+  border-radius: 1rem;
+  border: 1.5px solid #e2e8f0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: #ffffff;
+  color: #1e293b;
+}
+
+.login-input:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  transform: scale(1.01);
+}
+
+.login-input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+/* Button */
+.login-btn {
+  padding: 0.875rem;
+  border: none;
+  border-radius: 1rem;
+  background: linear-gradient(105deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  background-size: 200% auto;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.login-btn:hover::before {
+  left: 100%;
+}
+
+.login-btn:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -8px rgba(15, 23, 42, 0.4);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+/* Error Message */
+.login-error {
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: -0.75rem;
+  padding-left: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.login-error::before {
+  content: '⚠';
+  font-size: 0.7rem;
+}
+
+/* Text & Link */
+.login-text {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.login-link {
+  border: none;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 0.25rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.login-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  transition: width 0.2s ease;
+}
+
+.login-link:hover::after {
+  width: 100%;
+}
+
+/* Overlay */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+  animation: fadeIn 0.2s ease;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 560px) {
+  .login-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .login-card {
+    padding: 1.75rem;
+  }
+
+  .login-hero-title {
+    font-size: 2rem;
+  }
+  
+  .login-hero-section {
+    padding: 2rem 1rem;
+  }
+}
+/* 🔥 New: Card Heading */
+.login-card h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+/* 🔥 Better spacing for grouped inputs */
+.login-form > div {
+  margin-bottom: 0.75rem;
+}
+
+/* 🔥 Improve message spacing */
+.login-card .login-error {
+  margin-bottom: 0.75rem;
+}
+
+/* 🔥 Smooth input hover */
+.login-input:hover {
+  border-color: #cbd5f5;
+}
+
+/* 🔥 Disabled button state */
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 🔥 Subtle form animation */
+.login-form {
+  animation: fadeInUp 0.5s ease;
+}
+
+/* 🔥 Better mobile spacing */
+@media (max-width: 560px) {
+  .login-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .login-form > div {
+    margin-bottom: 0.6rem;
+  }
+}
