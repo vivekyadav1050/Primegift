@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/Myorder.css";
-
+import API from "../services/api";
 
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
@@ -18,14 +18,7 @@ function MyOrders() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:3000/api/primegift/my-orders-full",
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`
-            }
-          }
-        );
+        const res = await API.get("/api/primegift/my-orders-full");
 
         setOrders(res.data.orders || []);
         setLoading(false);
@@ -41,12 +34,10 @@ function MyOrders() {
 
   return (
     <div className="app-layout">
-
       {/* Navbar */}
       <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
 
       <div className="main-container">
-
         {/* Sidebar */}
         <Sidebar
           isOpen={isOpen}
@@ -57,19 +48,28 @@ function MyOrders() {
 
         {/* Content */}
         <div className="content-area">
+          <h2 className="page-title"> My Orders</h2>
 
-          <h2 className="page-title">📦 My Orders</h2>
-
-          {loading && <p>Loading...</p>}
+          {loading && (
+            <div className="loading-wrapper">
+              <div className="modern-spinner"></div>
+              <p>Loading your orders...</p>
+            </div>
+          )}
 
           {!loading && orders.length === 0 && (
-            <p>No orders found</p>
+            <div className="empty-state">
+              <svg className="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                <circle cx="12" cy="16" r="1" />
+              </svg>
+              <p>No orders found</p>
+            </div>
           )}
 
           {!loading &&
             orders.map((o, i) => (
               <div key={i} className="order-card">
-
                 {/* Brand */}
                 <div className="brand-row">
                   <img src={o.brandImage} alt={o.brandName} />
@@ -91,32 +91,25 @@ function MyOrders() {
 
                 <div className="row">
                   <span>Date:</span>
-                  <span>
-                    {new Date(o.createdAt).toLocaleString()}
-                  </span>
+                  <span>{new Date(o.createdAt).toLocaleString()}</span>
                 </div>
 
-                {/* 🔥 STATUS HANDLING */}
-
-                {/* PROCESSING */}
+                {/* STATUS HANDLING */}
                 {o.status === "PROCESSING" && (
                   <p className="processing">⏳ Generating voucher...</p>
                 )}
 
-                {/* FAILED */}
                 {o.status === "FAILED" && (
                   <p className="failed">❌ Failed / Refunded</p>
                 )}
 
-                {/* SUCCESS */}
                 {o.status === "SUCCESS" && (
                   <div className="voucher-list">
                     {o.vouchers.map((v, idx) => (
                       <div key={idx} className="voucher-card">
-
                         <div className="row">
                           <span>Code:</span>
-                          <span>{v.code}</span>
+                          <span className="voucher-code">{v.code}</span>
                         </div>
 
                         <div className="row">
@@ -125,31 +118,28 @@ function MyOrders() {
                         </div>
 
                         <PinReveal pin={v.pin} />
-
                       </div>
                     ))}
                   </div>
                 )}
-
               </div>
             ))}
-
         </div>
       </div>
     </div>
   );
 }
 
-/* 🔐 PIN Toggle */
+/* 🔐 PIN Toggle - Modern but simple */
 function PinReveal({ pin }) {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="row">
+    <div className="pin-row">
       <span>PIN:</span>
-      <div>
-        {show ? pin : "••••••"}
-        <button onClick={() => setShow(!show)}>
+      <div className="pin-controls">
+        <span className="pin-value">{show ? pin : "••••••"}</span>
+        <button className="pin-btn" onClick={() => setShow(!show)}>
           {show ? "Hide" : "Show"}
         </button>
       </div>

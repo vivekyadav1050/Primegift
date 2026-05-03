@@ -5,7 +5,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import "../styles/Myvoucher.css";
-
+import API from "../services/api";
 
 
 function Myvoucher() {
@@ -30,16 +30,11 @@ function Myvoucher() {
 
     let interval;
 
-    const fetchStatus = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:3000/api/primegift/order-status/${orderId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`
-            }
-          }
-        );
+          const fetchStatus = async () => {
+            try {
+          const res = await API.get(
+        `/api/primegift/order-status/${orderId}`
+      );
 
         if (res.data.status === "SUCCESS") {
           setStatus("SUCCESS");

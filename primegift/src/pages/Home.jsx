@@ -8,6 +8,7 @@ import Sidebar from "../components/Sidebar";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
 import CategoryBar from "../components/CategoryBar";
+import API from "../services/api";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -39,7 +40,7 @@ function Home() {
     try {
       setLoading(true);
 
-      let url = `http://localhost:3000/api/primegift/allproduct?page=${pageNum}`;
+     let url = `/api/primegift/allproduct?page=${pageNum}`;
 
       if (category !== "All") {
         url += `&category=${category}`;
@@ -49,7 +50,8 @@ function Home() {
         url += `&search=${search}`;
       }
 
-      const res = await axios.get(url);
+      const res = await API.get(url);
+      
 
       const formatted = res.data.products.map(item => ({
         name: item.name,
@@ -133,47 +135,57 @@ function Home() {
 
       {/* PRODUCTS */}
       {loading ? (
-        <p style={{ textAlign: "center" }}>Loading...</p>
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading amazing gifts...</p>
+        </div>
       ) : (
         <GiftGrid filteredGifts={gifts} />
       )}
 
-      {/* 🔥 PAGINATION */}
-      <div className="pagination">
-
-        {/* Prev */}
-        <button
-          disabled={page === 1}
-          onClick={() =>
-            fetchProducts(activeCategory, page - 1, searchTerm)
-          }
-        >
-          ⬅
-        </button>
-
-        {/* Page Numbers */}
-        {getPages().map((pageNum) => (
+      {/* 🔥 PAGINATION - Modern Blue Theme */}
+      {!loading && gifts.length > 0 && (
+        <div className="pagination">
+          {/* Prev */}
           <button
-            key={pageNum}
-            className={page === pageNum ? "active-page" : ""}
+            className="pagination-nav"
+            disabled={page === 1}
             onClick={() =>
-              fetchProducts(activeCategory, pageNum, searchTerm)
+              fetchProducts(activeCategory, page - 1, searchTerm)
             }
           >
-            {pageNum}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
           </button>
-        ))}
 
-        {/* Next */}
-        <button
-          disabled={page === totalPages}
-          onClick={() =>
-            fetchProducts(activeCategory, page + 1, searchTerm)
-          }
-        >
-          ➡
-        </button>
-      </div>
+          {/* Page Numbers */}
+          {getPages().map((pageNum) => (
+            <button
+              key={pageNum}
+              className={page === pageNum ? "active-page" : ""}
+              onClick={() =>
+                fetchProducts(activeCategory, pageNum, searchTerm)
+              }
+            >
+              {pageNum}
+            </button>
+          ))}
+
+          {/* Next */}
+          <button
+            className="pagination-nav"
+            disabled={page === totalPages}
+            onClick={() =>
+              fetchProducts(activeCategory, page + 1, searchTerm)
+            }
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+      )}
 
       <Footer />
     </div>

@@ -4,9 +4,14 @@ import "../styles/hero.css";
 function Hero({ searchTerm, setSearchTerm }) {
   return (
     <div className="hero-section">
+      {/* Floating orbs for modern effect */}
+      <div className="orb-1"></div>
+      <div className="orb-2"></div>
+      
       <div className="hero-content">
         <h1 className="hero-title">Discover Amazing Gift Cards</h1>
         <p className="hero-subtitle">Find the perfect voucher for every occasion</p>
+        
         <div className="search-container">
           <input
             type="text"
@@ -23,6 +28,8 @@ function Hero({ searchTerm, setSearchTerm }) {
             Search
           </button>
         </div>
+
+   
       </div>
     </div>
   );

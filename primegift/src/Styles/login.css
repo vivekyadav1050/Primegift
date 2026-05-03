@@ -265,3 +265,49 @@ justify-content: space-between;
     padding: 2rem 1rem;
   }
 }
+/* 🔥 New: Card Heading */
+.login-card h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+/* 🔥 Better spacing for grouped inputs */
+.login-form > div {
+  margin-bottom: 0.75rem;
+}
+
+/* 🔥 Improve message spacing */
+.login-card .login-error {
+  margin-bottom: 0.75rem;
+}
+
+/* 🔥 Smooth input hover */
+.login-input:hover {
+  border-color: #cbd5f5;
+}
+
+/* 🔥 Disabled button state */
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 🔥 Subtle form animation */
+.login-form {
+  animation: fadeInUp 0.5s ease;
+}
+
+/* 🔥 Better mobile spacing */
+@media (max-width: 560px) {
+  .login-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .login-form > div {
+    margin-bottom: 0.6rem;
+  }
+}

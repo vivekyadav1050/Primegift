@@ -1,4 +1,4 @@
-/* global.css - Modern Standard Premium Design */
+/* global.css - Modern Standard Premium Design with Blue Theme */
 /* No logic changed - CSS only */
 
 * {
@@ -7,10 +7,38 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary-blue: #3b82f6;
+  --primary-blue-dark: #2563eb;
+  --primary-blue-darker: #1d4ed8;
+  --primary-gradient: linear-gradient(135deg, #3b82f6, #2563eb);
+  --primary-gradient-hover: linear-gradient(135deg, #2563eb, #1d4ed8);
+  --bg-light: #f8fafc;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  --text-dark: #0f172a;
+  --text-gray: #475569;
+  --text-light: #64748b;
+  --border-light: #e2e8f0;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-light: #0f172a;
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --text-dark: #f1f5f9;
+    --text-gray: #cbd5e1;
+    --text-light: #94a3b8;
+    --border-light: #1e293b;
+  }
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
-  color: #0f172a;
+  background: var(--bg-gradient);
+  color: var(--text-dark);
   line-height: 1.5;
 }
 
@@ -20,7 +48,7 @@ body {
 
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  background: var(--bg-gradient);
   position: relative;
 }
 
@@ -75,11 +103,46 @@ input:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
   transform: scale(1.02);
-  border-color: #3b82f6;
+  border-color: var(--primary-blue);
 }
 
 /* ============================================ */
-/* PAGINATION - MODERN STANDARD DESIGN */
+/* LOADING STATE - Modern */
+/* ============================================ */
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--border-light);
+  border-top-color: var(--primary-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container p {
+  color: var(--text-light);
+  font-size: 0.938rem;
+  font-weight: 500;
+}
+
+/* ============================================ */
+/* PAGINATION - MODERN BLUE THEME */
 /* ============================================ */
 
 .pagination {
@@ -96,13 +159,13 @@ input:focus {
   min-width: 2.5rem;
   height: 2.5rem;
   padding: 0 0.75rem;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
+  border: 1px solid var(--border-light);
+  background: var(--bg-light);
   cursor: pointer;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-size: 0.875rem;
-  font-weight: 500;
-  color: #475569;
+  font-weight: 600;
+  color: var(--text-gray);
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
@@ -110,66 +173,55 @@ input:focus {
 }
 
 .pagination button:hover:not(:disabled) {
-  background: #f8fafc;
-  border-color: #3b82f6;
-  color: #3b82f6;
+  background: var(--primary-gradient);
+  border-color: transparent;
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .pagination button:active:not(:disabled) {
   transform: translateY(0);
 }
 
-/* Active Page Button */
-.pagination .active-page {
-  background: linear-gradient(135deg, #0f172a, #1e293b) !important;
-  color: white !important;
-  border-color: #1e293b !important;
-  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.2);
-}
-
-.pagination .active-page:hover {
-  background: linear-gradient(135deg, #1e293b, #0f172a) !important;
-  transform: translateY(-2px);
-}
-
-/* Disabled Buttons */
-.pagination button:disabled {
-  background: #f1f5f9;
-  border-color: #e2e8f0;
-  color: #94a3b8;
-  cursor: not-allowed;
-  transform: none;
-  opacity: 0.6;
-}
-
-/* First and Last Page Buttons */
-.pagination button:first-child,
-.pagination button:last-child {
+/* Navigation Arrows */
+.pagination-nav {
   font-size: 1rem;
   font-weight: 600;
 }
 
-/* ============================================ */
-/* LOADING STATE */
-/* ============================================ */
+.pagination-nav svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
 
-.app p[style*="text-align: center"] {
-  text-align: center !important;
-  padding: 3rem;
-  color: #64748b;
-  font-size: 0.938rem;
-  font-weight: 500;
-  background: #ffffff;
-  border-radius: 1rem;
-  max-width: 300px;
-  margin: 2rem auto;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+/* Active Page Button - Blue Gradient */
+.pagination .active-page {
+  background: var(--primary-gradient) !important;
+  color: white !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.pagination .active-page:hover {
+  background: var(--primary-gradient-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+/* Disabled Buttons */
+.pagination button:disabled {
+  background: var(--border-light);
+  border-color: var(--border-light);
+  color: var(--text-light);
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.5;
 }
 
 /* ============================================ */
-/* SCROLLBAR STYLING */
+/* SCROLLBAR STYLING - Blue Theme */
 /* ============================================ */
 
 ::-webkit-scrollbar {
@@ -178,17 +230,23 @@ input:focus {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--border-light);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--primary-gradient);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: var(--primary-gradient-hover);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-blue) var(--border-light);
 }
 
 /* ============================================ */
@@ -207,6 +265,11 @@ input:focus {
     height: 2.25rem;
     padding: 0 0.5rem;
     font-size: 0.813rem;
+  }
+  
+  .pagination-nav svg {
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -237,6 +300,11 @@ input:focus {
     padding: 0 0.25rem;
     font-size: 0.7rem;
   }
+  
+  .pagination-nav svg {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 /* ============================================ */
@@ -261,15 +329,53 @@ input:focus {
 }
 
 /* ============================================ */
-/* SELECTION COLOR */
+/* SELECTION COLOR - Blue Theme */
 /* ============================================ */
 
 ::selection {
-  background: #3b82f6;
+  background: var(--primary-blue);
   color: white;
 }
 
 ::-moz-selection {
-  background: #3b82f6;
+  background: var(--primary-blue);
   color: white;
+}
+
+/* ============================================ */
+/* ANIMATIONS */
+/* ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ============================================ */
+/* REDUCED MOTION */
+/* ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

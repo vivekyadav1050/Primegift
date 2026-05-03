@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import "../styles/Login.css";
 
+import API from "../services/api";
+
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -20,6 +23,10 @@ function Login() {
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [activeMenu, setActiveMenu] = useState("Login");
+
+  useEffect(() => {
+    window.history.replaceState({}, document.title);
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -36,40 +43,38 @@ function Login() {
     return newErrors;
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const err = validateLogin();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const err = validateLogin();
 
-  if (Object.keys(err).length !== 0) {
-    setErrors(err);
-    return;
-  }
-
-  setLoading(true);
-
-  try {
-    const res = await axios.post("http://localhost:3000/api/auth/login", {
-      email: formData.email,
-      password: formData.password
-    });
-
-    // ✅ Save token + user
-    localStorage.setItem("token", res.data.token);
-    console.log("token save")
-    localStorage.setItem("user", JSON.stringify({ name: res.data.name }));
-
-    navigate("/");
-
-  } catch (error) {
-    if (error.response) {
-      alert(error.response.data.message);
-    } else {
-      alert("Server error");
+    if (Object.keys(err).length !== 0) {
+      setErrors(err);
+      return;
     }
-  } finally {
-    setLoading(false);
-  }
-};
+
+    setLoading(true);
+
+    try {
+      const res = await API.post("/api/auth/login", {
+        email: formData.email,
+        password: formData.password
+      });
+
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify({ name: res.data.name }));
+
+      navigate("/");
+
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Server error");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="login-app">
@@ -95,27 +100,46 @@ const handleSubmit = async (e) => {
       <div className="login-container">
         <div className="login-card">
 
+          {/* 🔥 NEW: small heading */}
+          <h2 style={{ marginBottom: "1rem", textAlign: "center" }}>
+            Login to your account
+          </h2>
+
+          {/* message */}
+          {location.state?.message && (
+            <p className="login-error" style={{ marginBottom: "10px" }}>
+              {location.state.message}
+            </p>
+          )}
+
           <form onSubmit={handleSubmit} className="login-form">
 
-            <input
-              name="email"
-              placeholder="Email"
-              onChange={handleInputChange}
-              className="login-input"
-            />
-            {errors.email && <p className="login-error">{errors.email}</p>}
+            {/* Email */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+              <input
+                name="email"
+                placeholder="Email"
+                onChange={handleInputChange}
+                className="login-input"
+              />
+              {errors.email && <p className="login-error">{errors.email}</p>}
+            </div>
 
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="Password"
-              onChange={handleInputChange}
-              className="login-input"
-            />
-            {errors.password && <p className="login-error">{errors.password}</p>}
-          <button type="submit" className="login-btn" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
-          </button>
+            {/* Password */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Password"
+                onChange={handleInputChange}
+                className="login-input"
+              />
+              {errors.password && <p className="login-error">{errors.password}</p>}
+            </div>
+
+            <button type="submit" className="login-btn" disabled={loading}>
+              {loading ? "Logging in..." : "Login"}
+            </button>
 
             <p className="login-text">
               Don't have account?

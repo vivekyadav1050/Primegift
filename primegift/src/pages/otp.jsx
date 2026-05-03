@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/Otp.css";
 import axios from "axios";
+import API from "../services/api";
+
 
 function Otp() {
   const navigate = useNavigate();
@@ -50,10 +52,10 @@ function Otp() {
       setVerifySuccess("");
       setResendSuccess("");
 
-      const res = await axios.post(
-        "http://localhost:3000/api/auth/verify-otp",
-        { email, otp }
-      );
+    const res = await API.post("/api/auth/verify-otp", {
+  email,
+  otp
+});
 
       setVerifySuccess(res.data.message || "OTP verified successfully");
 
@@ -75,10 +77,9 @@ function Otp() {
       setVerifySuccess("");
       setResendSuccess("");
 
-      const res = await axios.post(
-        "http://localhost:3000/api/auth/resend-otp",
-        { email }
-      );
+    const res = await API.post("/api/auth/resend-otp", {
+  email
+});
 
       setResendSuccess(res.data.message || "OTP resent successfully");
       setTimer(30);

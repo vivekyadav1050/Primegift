@@ -5,6 +5,7 @@ import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import "../styles/Register.css";
+import API from "../services/api";
 
 function Register() {
   const navigate = useNavigate();
@@ -49,10 +50,7 @@ function Register() {
     try {
       setLoading(true);
 
-      const res = await axios.post(
-        "http://localhost:3000/api/auth/register",
-        formData
-      );
+   const res = await API.post("/api/auth/register", formData);
 
       console.log(res.data);
 
