@@ -5,7 +5,8 @@ import axios from "axios";
 import GiftCardDetail from "../components/GiftCardDetail";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import API from "../Services/api";
+import API from "../services/api";
+
 
 function CardDetail() {
   const [isOpen, setIsOpen] = useState(false);

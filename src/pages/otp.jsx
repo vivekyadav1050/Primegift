@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import "../styles/Otp.css";
+import "../styles/otp.css";
 import axios from "axios";
 import API from "../services/api";
 
