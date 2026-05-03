@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import axios from "axios";
-import "../styles/Login.css";
+import "../styles/login.css";
 
 import API from "../services/api";
 

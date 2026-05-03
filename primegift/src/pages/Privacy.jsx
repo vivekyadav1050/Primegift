@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
-import privacyContent from "../content/privacy";
+
+import privacyContent from "../content/Privacy";
+
 import "../styles/privacy.css";
 
 function Privacy() {

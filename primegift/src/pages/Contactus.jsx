@@ -24,6 +24,7 @@ function Contact() {
     });
   };
 
+  // d
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
