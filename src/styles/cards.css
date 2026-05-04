@@ -68,7 +68,7 @@
 .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-  background: white; /* Fixed: stays white on hover */
+  background: white;
 }
 
 /* Logo Container with Glass Effect */
@@ -193,7 +193,7 @@
   font-size: 0.875rem;
 }
 
-/* CTA Button */
+/* CTA Button - Reduced Hover Effect */
 .card-btn {
   width: 100%;
   margin-top: 1.25rem;
@@ -209,11 +209,12 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
 }
 
+/* Subtle shine effect - removed white flash */
 .card-btn::before {
   content: '';
   position: absolute;
@@ -221,18 +222,26 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s ease;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.4s ease;
 }
 
 .card-btn:hover::before {
   left: 100%;
 }
 
+/* Gentle hover effect - not too bright */
 .card-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(30, 60, 114, 0.3);
+  box-shadow: 0 4px 12px rgba(30, 60, 114, 0.2);
   gap: 0.75rem;
+  background: linear-gradient(135deg, #2a5298, #1e3c72);
+}
+
+/* Active/Click effect */
+.card-btn:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 6px rgba(30, 60, 114, 0.15);
 }
 
 /* No Results */
