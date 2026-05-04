@@ -265,6 +265,7 @@ export default function GiftCardDetail({ data }) {
                 { name: "Credit Card", icon: "💳", discount: `${Math.max((data.discountPercent || 0) - 1, 0)}% off` },
                 { name: "Debit Card", icon: "💳", discount: `${Math.max((data.discountPercent || 0) - 1, 0)}% off` },
                 { name: "e-Pay", icon: "🏦", discount: `${data.discountPercent || 0}% off` }
+                
               ].map((method) => (
                 <div
                   key={method.name}

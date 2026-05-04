@@ -10,7 +10,7 @@ function GiftGrid({ filteredGifts }) {
       <div className="section-header">
         <h2 className="section-title">Featured Offers</h2>
         <p className="section-subtitle">
-          {filteredGifts.length} vouchers available
+          351+ vouchers available
         </p>
       </div>
 
