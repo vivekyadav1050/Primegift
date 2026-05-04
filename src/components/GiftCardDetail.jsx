@@ -167,24 +167,26 @@ export default function GiftCardDetail({ data }) {
             </div>
 
             {/* How to Use */}
-            {data.howToUse?.length > 0 && (
-              <div className="info-section">
-                <h3>How to Use</h3>
-                {data.howToUse.map((item, i) => (
-                  <div key={i} className="howto-item">
-                    <div className="icon">✓</div>
-                    <div className="content">
-                      <strong>{item.retailModeName}</strong>
-                      <ul>
-                        {item.instructions?.map((step, j) => (
-                          <li key={j}>{step}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+         {data.usageInstructions && (
+  <div className="info-section">
+    <h3>How to Use</h3>
+
+    {Object.entries(data.usageInstructions).map(([mode, steps], i) => (
+      <div key={i} className="howto-item">
+        <div className="icon">✓</div>
+        <div className="content">
+          <strong>{mode}</strong>
+          <ul>
+            {steps.map((step, j) => (
+              <li key={j}>{step}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+
 
             {/* Terms & Conditions */}
             {data.termsAndConditions?.length > 0 && (
