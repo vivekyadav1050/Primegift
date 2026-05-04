@@ -100,7 +100,7 @@ function Myvoucher() {
 
           {status === "SUCCESS" && (
             <div>
-              <h2 className="page-title">🎉 Your Voucher</h2>
+              <h2 className="page-title"> Your Voucher</h2>
 
               {vouchers.length === 0 ? (
                 <p>No vouchers found</p>
