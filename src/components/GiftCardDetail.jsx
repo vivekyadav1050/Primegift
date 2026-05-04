@@ -160,10 +160,7 @@ export default function GiftCardDetail({ data }) {
           <div className="info-card">
             <h1 className="product-name">{data.name}</h1>
             <div className="product-meta">
-              <div className="rating">
-                <span className="stars">★★★★★</span>
-                <span className="rating-count">4.8 (2.3k reviews)</span>
-              </div>
+        
             </div>
 
             {/* How to Use */}
@@ -200,11 +197,7 @@ export default function GiftCardDetail({ data }) {
               </div>
             )}
 
-            {data.tncUrl && (
-              <a href={data.tncUrl} target="_blank" rel="noreferrer" className="tnc-link">
-                View Full Terms & Conditions →
-              </a>
-            )}
+         
           </div>
         </div>
 

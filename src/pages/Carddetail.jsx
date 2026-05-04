@@ -8,6 +8,7 @@ import Sidebar from "../components/Sidebar";
 import API from "../services/api";
 
 
+
 function CardDetail() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("Home");
