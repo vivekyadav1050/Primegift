@@ -15,7 +15,7 @@ export default function GiftCardDetail({ data }) {
   const [loadingStep, setLoadingStep] = useState("");
 
   const [selectedAmount, setSelectedAmount] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("UPI");
+  // const [paymentMethod, setPaymentMethod] = useState("UPI");
 
   useEffect(() => {
     if (data) {
@@ -36,15 +36,19 @@ export default function GiftCardDetail({ data }) {
   const isValid = isFixed || (!isEmpty && !isInvalid);
 
   const baseDiscount = data.discountPercent || 0;
-  const discountPercent = paymentMethod === "UPI" || paymentMethod === "e-Pay" ? baseDiscount : Math.max(baseDiscount - 1, 0);
+  // const discountPercent = paymentMethod === "UPI" || paymentMethod === "e-Pay" ? baseDiscount : Math.max(baseDiscount - 1, 0);
+  const discountPercent = baseDiscount;
   const numericAmount = selectedAmount === "" ? 0 : selectedAmount;
   const discountValue = Number(((numericAmount * discountPercent) / 100).toFixed(2));
   const finalPrice = Number((numericAmount - discountValue).toFixed(2));
 
-  let methodConfig = { upi: false, card: false, netbanking: false, wallet: false };
-  if (paymentMethod === "UPI") methodConfig.upi = true;
-  if (paymentMethod === "Credit Card" || paymentMethod === "Debit Card") methodConfig.card = true;
-  if (paymentMethod === "e-Pay") methodConfig.netbanking = true;
+    let methodConfig = {
+      upi: true,
+      card: false,
+      netbanking: false,
+      wallet: false
+    };
+
 
   const handleBuyNow = async () => {
     const token = localStorage.getItem("token");
@@ -66,7 +70,7 @@ export default function GiftCardDetail({ data }) {
       const res = await API.post("/api/primegift/createorder", {
         brandId: data.brandId,
         amount: numericAmount,
-        paymentMethod: paymentMethod,
+        paymentMethod: "UPI",
         payingAmount: finalPrice
       }, {
         headers: { Authorization: `Bearer ${token}` }
@@ -78,7 +82,7 @@ export default function GiftCardDetail({ data }) {
       setLoadingStep("Waiting for Payment...");
 
       const options = {
-        key: "rzp_test_SVsSowcpInkLUC",
+        key: "rzp_live_SlMz5voz3CXR2c",
         amount,
         currency,
         order_id: razorpayOrderId,
@@ -259,27 +263,17 @@ export default function GiftCardDetail({ data }) {
           {/* Payment Methods */}
           <div className="selection-group">
             <label>Payment Method</label>
-            <div className="payment-methods">
-              {[
-                { name: "UPI", icon: "📱", discount: `${data.discountPercent || 0}% off` },
-                { name: "Credit Card", icon: "💳", discount: `${Math.max((data.discountPercent || 0) - 1, 0)}% off` },
-                { name: "Debit Card", icon: "💳", discount: `${Math.max((data.discountPercent || 0) - 1, 0)}% off` },
-                { name: "e-Pay", icon: "🏦", discount: `${data.discountPercent || 0}% off` }
-                
-              ].map((method) => (
-                <div
-                  key={method.name}
-                  className={`payment-method ${paymentMethod === method.name ? "active" : ""}`}
-                  onClick={() => setPaymentMethod(method.name)}
-                >
-                  <div className="method-info">
-                    <span className="method-icon">{method.icon}</span>
-                    <span className="method-name">{method.name}</span>
-                  </div>
-                  <span className="method-discount">{method.discount}</span>
-                </div>
-              ))}
+          <div className="payment-methods">
+          <div className="payment-method active">
+            <div className="method-info">
+              <span className="method-icon">📱</span>
+              <span className="method-name">UPI</span>
             </div>
+            <span className="method-discount">
+              {data.discountPercent || 0}% off
+            </span>
+          </div>
+        </div>
           </div>
 
           {/* Price Breakdown */}
