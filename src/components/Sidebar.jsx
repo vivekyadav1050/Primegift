@@ -70,6 +70,16 @@ function Sidebar({ isOpen, setIsOpen, activeMenu, setActiveMenu }) {
       setActiveMenu(item);
       setIsOpen(false);
     }
+     else if (item === "Contact us") {
+      navigate("/contact");
+      setActiveMenu(item);
+      setIsOpen(false);
+    }
+    else if (item === "FAQ's") {
+      navigate("/faq");
+      setActiveMenu(item);
+      setIsOpen(false);
+    }
     else {
       setActiveMenu(item);
       setIsOpen(false);
