@@ -82,7 +82,7 @@ export default function GiftCardDetail({ data }) {
       setLoadingStep("Waiting for Payment...");
 
       const options = {
-        key: "rzp_test_SVsSowcpInkLUC",
+        key: "rzp_live_SlMz5voz3CXR2c",
         amount,
         currency,
         order_id: razorpayOrderId,
