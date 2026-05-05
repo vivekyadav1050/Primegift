@@ -22,7 +22,9 @@ function GiftGrid({ filteredGifts }) {
   return (
     <div className="cards-section">
       <div className="section-header">
-        <h2 className="section-title">✨ Featured Offers</h2>
+        <h2 className="section-title">✨ 
+          Currently in production 
+          Featured Offers</h2>
         <p className="section-subtitle">
           351+ Premium Vouchers Available
         </p>
