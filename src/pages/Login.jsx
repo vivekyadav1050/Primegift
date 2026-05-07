@@ -63,17 +63,17 @@ function Login() {
       newErrors.phone = "Invalid phone number";
     }
 
-    if (!formData.password) {
+   if (!formData.password) {
 
-      newErrors.password = "Password required";
+  newErrors.password = "Password required";
 
-    } else if (
-      !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(formData.password)
-    ) {
+} else if (
+  !/^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(formData.password)
+) {
 
-      newErrors.password =
-        "Password must be 6+ characters with letters and numbers";
-    }
+  newErrors.password =
+    "Password must be 6+ characters with letters and numbers";
+}
 
     return newErrors;
   };

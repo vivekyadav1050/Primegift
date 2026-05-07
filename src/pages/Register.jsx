@@ -49,11 +49,10 @@ function Register() {
     }
 
    if (!formData.password) {
-
   err.password = "Password required";
 
 } else if (
-  !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(formData.password)
+  !/^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(formData.password)
 ) {
 
   err.password =
