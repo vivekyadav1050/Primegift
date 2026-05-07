@@ -159,7 +159,7 @@ function Myvoucher() {
                           <span className="badge">Gift Voucher</span>
                         </div>
                         <div className="amount-display">
-                          <span className="currency">$</span>
+                          <span className="currency">₹</span>
                           <span className="amount-value">{(v.amount / 100).toFixed(2)}</span>
                         </div>
                       </div>
