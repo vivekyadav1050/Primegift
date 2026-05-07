@@ -21,6 +21,7 @@ function Myvoucher() {
   // Data
   const [status, setStatus] = useState("LOADING");
   const [vouchers, setVouchers] = useState([]);
+  const [copiedIndex, setCopiedIndex] = useState(null);
 
   useEffect(() => {
     if (!orderId) {
@@ -60,6 +61,12 @@ function Myvoucher() {
     return () => clearInterval(interval);
   }, [orderId, navigate]);
 
+  const handleCopy = (code, index) => {
+    navigator.clipboard.writeText(code);
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
   return (
     <div className="app-layout">
 
@@ -80,67 +87,114 @@ function Myvoucher() {
         <div className="content-area">
 
           {status === "LOADING" && (
-            <div className="center-box">Loading...</div>
+            <div className="state-container">
+              <div className="loading-spinner"></div>
+              <h3>Loading your vouchers...</h3>
+              <p>Please wait while we retrieve your order details</p>
+            </div>
           )}
 
           {status === "PROCESSING" && (
-            <div className="center-box">
-              <h2>⏳ Processing your order</h2>
-              <p>Your voucher is being generated...</p>
+            <div className="state-container processing-state">
+              <div className="pulse-animation"></div>
+              <div className="loading-spinner"></div>
+              <h3>Processing your order</h3>
+              <p>Your voucher is being generated securely</p>
+              <div className="progress-steps">
+                <div className="step completed">
+                  <span className="step-icon">✓</span>
+                  <span>Order Confirmed</span>
+                </div>
+                <div className="step active">
+                  <span className="step-icon">⟳</span>
+                  <span>Generating Voucher</span>
+                </div>
+                <div className="step">
+                  <span className="step-icon">🔒</span>
+                  <span>Securing PIN</span>
+                </div>
+              </div>
             </div>
           )}
 
           {status === "FAILED" && (
-            <div className="center-box error">
-              <h2>❌ Order Failed</h2>
-              <p>Payment failed or refunded.</p>
-              <button onClick={() => navigate("/")}>Go Home</button>
+            <div className="state-container error-state">
+              <div className="error-icon">✗</div>
+              <h3>Order Failed</h3>
+              <p>Payment failed or refunded</p>
+              <button onClick={() => navigate("/")} className="home-button">
+                Return to Home
+              </button>
             </div>
           )}
 
           {status === "SUCCESS" && (
             <div>
-              <h2 className="page-title"> Your Voucher</h2>
+              <div className="success-header">
+                <div className="success-icon">✓</div>
+                <h2 className="page-title">Your Vouchers</h2>
+                <p className="page-description">Thank you for your purchase</p>
+              </div>
 
               {vouchers.length === 0 ? (
-                <p>No vouchers found</p>
+                <div className="empty-vouchers">
+                  <p>No vouchers found</p>
+                </div>
               ) : (
-                vouchers.map((v, i) => (
-                  <div key={i} className="voucher-card">
-
-                    {/* Brand */}
-                    <div className="brand-row">
-                      <img src={v.brandImage} alt={v.brandName} />
-                      <h4>{v.brandName}</h4>
-                    </div>
-
-                    {/* Code */}
-                    <div className="row">
-                      <span>Code:</span>
-                      <div>
-                        {v.code}
-                        <button
-                          onClick={() => {
-                            navigator.clipboard.writeText(v.code);
-                            alert("Copied!");
-                          }}
-                        >
-                          📋
-                        </button>
+                <div className="vouchers-list">
+                  {vouchers.map((v, i) => (
+                    <div key={i} className="voucher-card-modern">
+                      
+                      {/* Brand Section */}
+                      <div className="brand-section">
+                        <div className="brand-logo">
+                          {v.brandImage ? (
+                            <img src={v.brandImage} alt={v.brandName} />
+                          ) : (
+                            <div className="logo-placeholder">🎁</div>
+                          )}
+                        </div>
+                        <div className="brand-info">
+                          <h4>{v.brandName}</h4>
+                          <span className="badge">Gift Voucher</span>
+                        </div>
+                        <div className="amount-display">
+                          <span className="currency">$</span>
+                          <span className="amount-value">{(v.amount / 100).toFixed(2)}</span>
+                        </div>
                       </div>
+
+                      {/* Voucher Code Section */}
+                      <div className="detail-row">
+                        <div className="detail-label">
+                          <span className="label-icon"></span>
+                          <span>Voucher Code</span>
+                        </div>
+                        <div className="detail-value code-value">
+                          <code>{v.code}</code>
+                          <button 
+                            onClick={() => handleCopy(v.code, i)}
+                            className={`copy-btn ${copiedIndex === i ? 'copied' : ''}`}
+                          >
+                            {copiedIndex === i ? '✓ Copied!' : 'Copy'}
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* PIN Section */}
+                      {v.pinEncrypted && (
+                        <PinRevealModern pin={v.pinEncrypted} />
+                      )}
+
+                      {/* Footer */}
+                      <div className="voucher-footer">
+                        <span className="footer-text"></span>
+                        <span className="footer-link"></span>
+                      </div>
+
                     </div>
-
-                    {/* Amount */}
-                    <div className="row">
-                      <span>Amount:</span>
-                      <span>₹ {(v.amount / 100).toFixed(2)}</span>
-                    </div>
-
-                    {/* PIN */}
-                    {v.pinEncrypted && <PinReveal pin={v.pinEncrypted} />}
-
-                  </div>
-                ))
+                  ))}
+                </div>
               )}
             </div>
           )}
@@ -151,16 +205,19 @@ function Myvoucher() {
   );
 }
 
-function PinReveal({ pin }) {
+function PinRevealModern({ pin }) {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="row">
-      <span>PIN:</span>
-      <div>
-        {show ? pin : "••••••"}
-        <button onClick={() => setShow(!show)}>
-          {show ? "Hide" : "Show"}
+    <div className="detail-row pin-row">
+      <div className="detail-label">
+        <span className="label-icon"></span>
+        <span>PIN Code</span>
+      </div>
+      <div className="detail-value">
+        <code>{show ? pin : "••••••"}</code>
+        <button onClick={() => setShow(!show)} className="reveal-btn">
+          {show ? 'Hide' : 'Show'}
         </button>
       </div>
     </div>

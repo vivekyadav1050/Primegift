@@ -82,7 +82,8 @@ export default function GiftCardDetail({ data }) {
       setLoadingStep("Waiting for Payment...");
 
       const options = {
-        key: "rzp_test_SVsSowcpInkLUC",
+        key: "rzp_test_Sm8gRN9dhKTgbR",
+        
         amount,
         currency,
         order_id: razorpayOrderId,
@@ -103,6 +104,7 @@ export default function GiftCardDetail({ data }) {
             navigate(`/my_vouchers?orderId=${orderId}`);
           } catch {
             setLoading(false);
+            console.API.error("Payment verification failed", err);
             alert("Payment verification failed ❌");
           }
         }

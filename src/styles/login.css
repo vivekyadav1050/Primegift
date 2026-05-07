@@ -149,11 +149,8 @@ justify-content: space-between;
 }
 
 .login-btn:hover {
-  background-position: right center;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -8px rgba(15, 23, 42, 0.4);
+  background: linear-gradient(105deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
 }
-
 .login-btn:active {
   transform: translateY(0);
 }
@@ -163,7 +160,7 @@ justify-content: space-between;
   color: #ef4444;
   font-size: 0.75rem;
   font-weight: 500;
-  margin-top: -0.75rem;
+  margin-top: 0.3rem;
   padding-left: 0.25rem;
   display: flex;
   align-items: center;
