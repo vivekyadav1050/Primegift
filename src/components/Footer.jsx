@@ -68,7 +68,7 @@ function Footer() {
 
       {/* Copyright */}
       <div className="copyright">
-        <p>© 2024 PrimeGift. All rights reserved. Made with ❤️ for gift lovers</p>
+        <p>© 2026 PrimeGift. All rights reserved. Made with ❤️ for gift lovers</p>
       </div>
     </footer>
   );
