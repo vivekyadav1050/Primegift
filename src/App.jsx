@@ -15,6 +15,8 @@ import Faq from "./pages/Faq";
 import Privacy from "./pages/Privacy";
 
 import ProtectedRoute from "./components/ProtectedRoute";
+import ForgotPassword from "./pages/Forgetpassword";
+import ResetPassword from "./pages/Resetpassword";
 
 function App() {
   return (
@@ -25,7 +27,11 @@ function App() {
 
       <Route path="/register" element={<Register />} />
 
-      <Route path="/otp" element={<Otp />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+
+      <Route path="/otp" element={<Otp/>} />
+
+      <Route path="/reset-password" element={<ResetPassword />} />
 
       <Route path="/product/:id" element={<Cardetail />} />
 

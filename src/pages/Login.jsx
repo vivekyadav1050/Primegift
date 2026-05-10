@@ -4,6 +4,7 @@ import {
   useNavigate,
   useLocation
 } from "react-router-dom";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
@@ -212,38 +213,60 @@ function Login() {
 
             </div>
 
-            {/* PASSWORD */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "4px"
-              }}
-            >
+{/* PASSWORD */}
+<div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    gap: "4px"
+  }}
+>
 
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Password"
-                onChange={handleInputChange}
-                className="login-input"
-              />
+  <div
+    style={{
+      position: "relative",
+      display: "flex",
+      alignItems: "center"
+    }}
+  >
 
-              {errors.password && (
-                <p className="login-error">
-                  {errors.password}
-                </p>
-              )}
+    <input
+      type={showPassword ? "text" : "password"}
+      name="password"
+      placeholder="Password"
+      onChange={handleInputChange}
+      className="login-input"
+      style={{ width: "100%", paddingRight: "10px" }}
+    />
 
-            </div>
 
-            <button
+
+  </div>
+
+  {errors.password && (
+    <p className="login-error">
+      {errors.password}
+    </p>
+  )}
+
+  <button
+    type="button"
+    className="login-link forgot-password"
+    onClick={() => navigate("/forgot-password")}
+  >
+    Forgot Password?
+  </button>
+
+</div>
+<button
               type="submit"
               className="login-btn"
               disabled={loading}
             >
               {loading ? "Logging in..." : "Login"}
             </button>
+
+
 
             <p className="login-text">
 

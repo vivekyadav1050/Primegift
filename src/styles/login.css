@@ -308,3 +308,13 @@ justify-content: space-between;
     margin-bottom: 0.6rem;
   }
 }
+.forgot-password {
+  align-self: flex-end;
+  margin-top: 4px;
+  font-size: 0.85rem;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-password-toggle-button {
+  display: none;
+}

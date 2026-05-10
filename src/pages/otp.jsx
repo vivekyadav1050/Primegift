@@ -12,6 +12,7 @@ function Otp() {
 
   const phone = location.state?.phone || "";
   const initialSessionId = location.state?.sessionId || "";
+  const purpose = location.state?.purpose || "register";
 
   const [otp, setOtp] = useState("");
   const [sessionId, setSessionId] = useState(initialSessionId);
@@ -26,10 +27,15 @@ function Otp() {
 
   useEffect(() => {
 
-    if (!phone || !sessionId) {
-      navigate("/register");
-    }
+  if (!phone || !sessionId) {
 
+  if (purpose === "forgot-password") {
+    navigate("/forgot-password");
+  } else {
+    navigate("/register");
+  }
+
+}
   }, [phone, sessionId, navigate]);
 
   useEffect(() => {
@@ -65,9 +71,13 @@ function Otp() {
       setError("");
       setVerifySuccess("");
       setResendSuccess("");
+const endpoint =
+  purpose === "forgot-password"
+    ? "/api/auth/forgot-password/verify-otp"
+    : "/api/auth/verify-otp";
 
       const res = await API.post(
-        "/api/auth/verify-otp",
+        endpoint,
         {
           phone,
           otp,
@@ -79,9 +89,24 @@ function Otp() {
         res.data.message || "OTP verified successfully"
       );
 
-      setTimeout(() => {
+        setTimeout(() => {
+
+      // FORGOT PASSWORD FLOW
+      if (purpose === "forgot-password") {
+
+        navigate("/reset-password", {
+          state: {
+            resetToken: res.data.resetToken
+          }
+        });
+
+      } else {
+
+        // REGISTER FLOW
         navigate("/login");
-      }, 1500);
+      }
+
+    }, 1500);
 
     } catch (err) {
 
@@ -109,7 +134,9 @@ function Otp() {
       setResendSuccess("");
 
       const res = await API.post(
-        "/api/auth/resend-otp",
+        purpose === "forgot-password"
+  ? "/api/auth/forgot-password/send-otp"
+  : "/api/auth/resend-otp",
         {
           phone
         }
@@ -196,8 +223,9 @@ function Otp() {
                 value={otp}
                 onChange={(e) => {
 
-                  setOtp(e.target.value);
-
+setOtp(
+  e.target.value.replace(/\D/g, "")
+);
                   setError("");
                   setVerifySuccess("");
                   setResendSuccess("");

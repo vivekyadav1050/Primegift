@@ -21,15 +21,140 @@ function Register() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState("Register");
   const [loading, setLoading] = useState(false);
+const handleInputChange = (e) => {
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const { name, value } = e.target;
 
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+  let updatedValue = value;
+
+  // MOBILE ONLY NUMBERS
+  if (name === "mobile") {
+    updatedValue = value.replace(/\D/g, "");
+  }
+
+  const updatedData = {
+    ...formData,
+    [name]: updatedValue
   };
+
+  setFormData(updatedData);
+
+  const newErrors = {
+    ...errors
+  };
+
+  // ================= NAME =================
+  if (name === "name") {
+
+    if (!updatedValue.trim()) {
+
+      newErrors.name = "Name required";
+
+    } else {
+
+      delete newErrors.name;
+    }
+  }
+
+  // ================= EMAIL =================
+  if (name === "email") {
+
+    if (!updatedValue.trim()) {
+
+      newErrors.email = "Email required";
+
+    } else if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(updatedValue)
+    ) {
+
+      newErrors.email = "Invalid email";
+
+    } else {
+
+      delete newErrors.email;
+    }
+  }
+
+  // ================= MOBILE =================
+  if (name === "mobile") {
+
+    if (!updatedValue) {
+
+      newErrors.mobile =
+        "Mobile number required";
+
+    } else if (
+      !/^[6-9]\d{9}$/.test(updatedValue)
+    ) {
+
+      newErrors.mobile =
+        "Invalid mobile number";
+
+    } else {
+
+      delete newErrors.mobile;
+    }
+  }
+
+  // ================= PASSWORD =================
+  if (name === "password") {
+
+    if (!updatedValue) {
+
+      newErrors.password =
+        "Password required";
+
+    } else if (
+      !/^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(updatedValue)
+    ) {
+
+      newErrors.password =
+        "Password must be 6+ characters with letters and numbers";
+
+    } else {
+
+      delete newErrors.password;
+    }
+
+    // LIVE CONFIRM PASSWORD CHECK
+    if (
+      updatedData.confirmPassword &&
+      updatedValue !== updatedData.confirmPassword
+    ) {
+
+      newErrors.confirmPassword =
+        "Passwords do not match";
+
+    } else {
+
+      delete newErrors.confirmPassword;
+    }
+  }
+
+  // ================= CONFIRM PASSWORD =================
+  if (name === "confirmPassword") {
+
+    if (!updatedValue) {
+
+      newErrors.confirmPassword =
+        "Confirm your password";
+
+    } else if (
+      updatedValue !== updatedData.password
+    ) {
+
+      newErrors.confirmPassword =
+        "Passwords do not match";
+
+    } else {
+
+      delete newErrors.confirmPassword;
+    }
+  }
+
+  setErrors(newErrors);
+};
+  
 
   const validate = () => {
     const err = {};
