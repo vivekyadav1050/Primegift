@@ -34,6 +34,11 @@ function Navbar({ setIsOpen, isOpen }) {
         </button>
 
         <Link to="/" className="logo-section">
+          <img 
+            src="/favicon.png" 
+            alt="PrimeGift Logo" 
+            className="logo-image"
+          />
           <h2 className="logo">PrimeGift</h2>
         </Link>
       </div>
@@ -52,7 +57,9 @@ function Navbar({ setIsOpen, isOpen }) {
               onClick={() => navigate("/register")}
             >
               Get Started
-           
+              <svg className="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
             </button>
           </>
         )}
@@ -61,7 +68,6 @@ function Navbar({ setIsOpen, isOpen }) {
             <div className="user-avatar">
               {user.name?.charAt(0).toUpperCase() || "U"}
             </div>
-        
           </div>
         )}
       </div>

@@ -112,14 +112,35 @@
   background: #3b82f6;
 }
 
-/* ===== LOGO - WHITE COLOR & NO ICON ===== */
+/* ===== LOGO SECTION WITH IMAGE ===== */
 .logo-section {
   text-decoration: none;
   display: flex;
   align-items: center;
+  gap: 10px;
   position: relative;
+  transition: all var(--transition-base);
 }
 
+.logo-section:hover {
+  transform: scale(1.02);
+}
+
+/* Logo Image Styles */
+.logo-image {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.2));
+  transition: all var(--transition-base);
+}
+
+.logo-section:hover .logo-image {
+  filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.4));
+  transform: rotate(5deg);
+}
+
+/* Logo Text */
 .logo {
   margin: 0;
   font-size: 1.5rem;
@@ -128,6 +149,15 @@
   color: #ffffff;
   background: none;
   -webkit-text-fill-color: #ffffff;
+  transition: all var(--transition-base);
+}
+
+.logo-section:hover .logo {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .logo-section::after {
@@ -277,6 +307,15 @@
   box-shadow: var(--shadow-lg);
 }
 
+.navbar.scrolled .logo-image {
+  width: 28px;
+  height: 28px;
+}
+
+.navbar.scrolled .logo {
+  font-size: 1.35rem;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .navbar {
@@ -289,6 +328,20 @@
 
   .logo {
     font-size: 1.25rem;
+  }
+  
+  .logo-image {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .navbar.scrolled .logo-image {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .navbar.scrolled .logo {
+    font-size: 1.15rem;
   }
 
   .login-btn,
@@ -314,11 +367,29 @@
   .logout-btn {
     padding: 0.5rem;
   }
+  
+  .logo-section {
+    gap: 8px;
+  }
 }
 
 @media (max-width: 480px) {
   .logo {
     font-size: 1rem;
+  }
+  
+  .logo-image {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .navbar.scrolled .logo-image {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .navbar.scrolled .logo {
+    font-size: 0.95rem;
   }
   
   .login-btn,
@@ -334,6 +405,43 @@
   .menu-icon-wrapper {
     width: 18px;
     height: 14px;
+  }
+  
+  .logo-section {
+    gap: 6px;
+  }
+}
+
+/* Mobile specific fixes without stacking */
+@media (max-width: 768px) {
+  .auth-buttons {
+    gap: 0.3rem;
+  }
+
+  .login-btn,
+  .register-btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-buttons {
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+  }
+
+  .login-btn,
+  .register-btn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.65rem;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .logo-section {
+    gap: 4px;
   }
 }
 
@@ -354,35 +462,5 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-/* ===== FIX WITHOUT STACKING ===== */
-
-@media (max-width: 768px) {
-  .auth-buttons {
-    gap: 0.3rem;
-  }
-
-  .login-btn,
-  .register-btn {
-    padding: 0.35rem 0.6rem;
-    font-size: 0.7rem;
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 480px) {
-  .auth-buttons {
-    flex-wrap: nowrap; /* keep in one line */
-    gap: 0.25rem;
-  }
-
-  .login-btn,
-  .register-btn {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.65rem;
-    flex: 1;              /* 🔥 share space equally */
-    min-width: 0;         /* 🔥 allow shrinking */
   }
 }
