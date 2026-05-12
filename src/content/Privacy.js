@@ -1,36 +1,82 @@
 const privacyContent = `
-PrimeGift values your privacy and is committed to protecting your personal information.
+PrimeGift.in values the privacy and security of its users. This Privacy Policy explains how we collect, use, store, and protect user information when customers access or use our platform.
 
-Information We Collect
-We may collect personal details such as name, email address, phone number, and transaction details when you use our platform.
+1. Information We Collect
+   PrimeGift.in may collect the following information from users:
 
-How We Use Information
-The collected data is used for:
-- Account creation and management
-- Processing transactions
-- Providing customer support
-- Improving our services
+* Full name
+* Mobile number
+* Email address
+* Billing details
+* Transaction/payment information
+* Device/browser information
+* IP address
+* Usage activity on the website
 
-Payment Security
-All payments are processed securely through trusted third-party payment gateways such as Razorpay. We do not store your card or payment details on our servers.
+2. Purpose of Data Collection
+   User information is collected for the following purposes:
 
-Data Sharing
-We do not sell or rent your personal information. Data may be shared with trusted service providers only for transaction processing or as required by law.
+* Order processing and digital delivery
+* Payment verification and fraud prevention
+* Customer support and dispute handling
+* Improving website performance and user experience
+* Legal, regulatory, and compliance requirements
+* Sending order updates, service notifications, and promotional communication
 
-Data Protection
-We implement appropriate security measures to protect your data from unauthorized access, misuse, or disclosure.
+3. Payment Information
+   PrimeGift.in does not store customers’ complete debit card, credit card, UPI PIN, or banking credentials on its servers.
 
-Cookies
-Our platform may use cookies to enhance user experience and improve functionality.
+Payments are securely processed through authorized payment gateway partners compliant with applicable security standards.
 
-User Consent
-By using PrimeGift, you agree to the collection and use of your information as described in this policy.
+4. Data Sharing & Third Parties
+   PrimeGift.in may share limited customer information with:
 
-Policy Updates
-We may update this Privacy Policy from time to time. Users are advised to review this page periodically.
+* Payment gateway providers
+* Authorized aggregators and distribution partners
+* Fraud prevention and risk monitoring systems
+* Government or legal authorities when required by law
 
-Contact
-For any privacy-related concerns, please contact us at vivekdrivelpu@gmail.com.
+PrimeGift.in does not sell or rent personal information to unauthorized third parties.
+
+5. Cookies & Tracking Technologies
+   PrimeGift.in may use cookies and similar technologies to:
+
+* Improve website functionality
+* Store user preferences
+* Analyze traffic and usage behavior
+* Enhance user experience and security
+
+Users may disable cookies through browser settings; however, certain website features may not function properly.
+
+6. Data Protection & Security
+   PrimeGift.in implements reasonable technical and organizational security measures to protect customer information against unauthorized access, misuse, loss, disclosure, or alteration.
+
+7. Data Retention
+   User information may be retained for operational, legal, tax, fraud prevention, dispute resolution, and regulatory compliance purposes.
+
+8. User Responsibility
+   Users are responsible for maintaining the confidentiality of their account information and ensuring the accuracy of the details submitted on the platform.
+
+9. Third-Party Links
+   PrimeGift.in may contain links to third-party websites or brand pages. PrimeGift.in is not responsible for the privacy practices or content of external websites.
+
+10. Policy Updates
+    PrimeGift.in reserves the right to modify or update this Privacy Policy at any time without prior notice. Continued use of the platform constitutes acceptance of the updated policy.
+
+11. Governing Law
+    This Privacy Policy shall be governed by and interpreted in accordance with the laws of India.
+
+12. Contact Information
+    For privacy-related queries or concerns, contact:
+
+Email: [support@primegift.in](mailto:support@primegift.in)
+Phone: +91 9335960949
+
+Business Address:
+Behind Thana Puramufti,
+Prayagraj,
+Uttar Pradesh,
+India
 `;
 
 export default privacyContent;
