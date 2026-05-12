@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 
-import refundContent from "../content/Refund";  
+import refundContent from "../content/refund";  
 
 import "../styles/privacy.css";
 
