@@ -30,7 +30,7 @@ Policy Updates
 We may update this Privacy Policy from time to time. Users are advised to review this page periodically.
 
 Contact
-For any privacy-related concerns, please contact us through the Contact Us page.
+For any privacy-related concerns, please contact us at vivekdrivelpu@gmail.com.
 `;
 
 export default privacyContent;

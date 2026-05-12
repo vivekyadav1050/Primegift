@@ -1,36 +1,33 @@
-const privacyContent = `
-PrimeGift values your privacy and is committed to protecting your personal information.
+const refundContent = `
+PrimeGift.in is a digital gifting platform that facilitates the purchase and delivery of branded digital gift cards and prepaid vouchers sourced through authorized aggregators, distributors, and brand-authorized partners.
 
-Information We Collect
-We may collect personal details such as name, email address, phone number, and transaction details when you use our platform.
+1. Nature of Products
+All products sold on PrimeGift.in are digital prepaid instruments/gift vouchers delivered electronically via email, user dashboard, or WhatsApp after successful payment confirmation.
 
-How We Use Information
-The collected data is used for:
-- Account creation and management
-- Processing transactions
-- Providing customer support
-- Improving our services
+2. Authorized Sourcing
+PrimeGift.in procures gift cards and vouchers only from trusted and authorized distribution partners and aggregators. PrimeGift.in does not generate or issue unauthorized gift cards independently.
 
-Payment Security
-All payments are processed securely through trusted third-party payment gateways such as Razorpay. We do not store your card or payment details on our servers.
+3. Delivery Policy
+Orders are processed instantly or within the timelines specified on the website after successful payment verification. Delivery is completed digitally to the contact details provided by the customer.
 
-Data Sharing
-We do not sell or rent your personal information. Data may be shared with trusted service providers only for transaction processing or as required by law.
+4. Refund & Cancellation
+Due to the digital and instantly consumable nature of gift cards, all successfully delivered orders are non-returnable and non-refundable.
 
-Data Protection
-We implement appropriate security measures to protect your data from unauthorized access, misuse, or disclosure.
+5. Failed or Pending Transactions
+If payment is deducted but the order is not successfully processed or delivered, the deducted amount will be automatically refunded to the original payment source within 5-7 business days, subject to banking timelines.
 
-Cookies
-Our platform may use cookies to enhance user experience and improve functionality.
+6. Duplicate Payments
+In cases of duplicate or excess payment for the same transaction, customers may contact the support team with transaction details for verification and refund processing.
 
-User Consent
-By using PrimeGift, you agree to the collection and use of your information as described in this policy.
+7. Fraud Prevention & Compliance
+PrimeGift.in reserves the right to hold, review, cancel, or reject transactions flagged as suspicious, high-risk, unauthorized, or non-compliant with payment gateway policies and applicable laws.
 
-Policy Updates
-We may update this Privacy Policy from time to time. Users are advised to review this page periodically.
+8. Customer Responsibility
+Customers must provide accurate email addresses and mobile numbers while placing orders. PrimeGift.in shall not be responsible for delivery issues arising from incorrect information submitted by users.
 
-Contact
-For any privacy-related concerns, please contact us through the Contact Us page.
+9. Contact Information
+For payment, refund, or order-related support, customers may contact:
+vivekdrivelpu@gmail.com
 `;
-
-export default privacyContent;
+ 
+export default refundContent;

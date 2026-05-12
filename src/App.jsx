@@ -13,6 +13,8 @@ import About from "./pages/Aboutus";
 import Contact from "./pages/Contactus";
 import Faq from "./pages/Faq";
 import Privacy from "./pages/Privacy";
+import Terms from "./pages/Termandcondition";
+import RefundPolicy from "./pages/Refundpolicy";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import ForgotPassword from "./pages/Forgetpassword";
@@ -60,6 +62,10 @@ function App() {
       <Route path="/faq" element={<Faq />} />
 
       <Route path="/privacy" element={<Privacy />} />
+      
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/refund" element={<RefundPolicy/>} />
+
     </Routes>
   );
 }
