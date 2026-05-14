@@ -1,44 +1,67 @@
 const refundContent = `
-PrimeGift.in is a digital gifting platform that facilitates the purchase and delivery of branded digital gift cards and prepaid vouchers sourced through authorized aggregators, distributors, and brand-authorized partners.
+PrimeGift.in is a digital voucher distribution platform that facilitates the purchase and delivery of branded digital gift cards and prepaid vouchers sourced through trusted aggregators, distributors, and authorized partner networks.
 
 1. Nature of Products
-   All products sold on PrimeGift.in are digital prepaid instruments/gift vouchers delivered electronically via email, user dashboard, or WhatsApp after successful payment confirmation.
+
+All products sold on PrimeGift.in are digital prepaid instruments and gift vouchers delivered electronically after successful payment confirmation.
 
 2. Authorized Sourcing
-   PrimeGift.in procures gift cards and vouchers only from trusted and authorized aggregators, distributors, and brand-authorized partners. PrimeGift.in does not generate or issue unauthorized gift cards independently.
 
-3. Delivery Policy
-   Orders are processed instantly or within the timelines specified on the website after successful payment verification.
+PrimeGift.in procures gift cards and vouchers only from trusted aggregators, distributors, and authorized partner networks.
 
-Most gift cards are delivered instantly. In some cases, delivery may take up to 24 hours due to verification, fraud checks, or technical processing delays.
+PrimeGift.in does not independently generate, manufacture, or issue unauthorized gift cards or prepaid vouchers.
 
-Delivery is completed digitally to the contact details provided by the customer.
+3. Shipping & Delivery
+
+Orders are processed instantly or within the timelines specified on the platform after successful payment verification.
+
+Most digital vouchers are delivered instantly. In certain situations, delivery may take up to 24 hours due to:
+
+* Payment verification
+* Fraud prevention checks
+* Technical processing delays
+* Partner-side processing
+
+Delivery is completed electronically through the customer’s registered email address, dashboard, or registered contact details.
 
 4. Refund & Cancellation
-   Due to the digital and instantly consumable nature of gift cards, all successfully delivered orders are non-returnable and non-refundable.
+
+Due to the instantly consumable and digital nature of gift cards and vouchers, all successfully delivered orders are non-returnable, non-refundable, and non-cancellable.
 
 5. Failed or Pending Transactions
-   If payment is deducted but the order is not successfully processed or delivered, the deducted amount will be automatically refunded to the original payment source within 5-7 business days, subject to banking timelines.
+
+If payment is deducted but the order is not successfully processed or delivered, the deducted amount shall be refunded automatically to the original payment source within 5–7 business days, subject to banking timelines.
 
 6. Duplicate Payments
-   In cases of duplicate or excess payment for the same transaction, customers may contact the support team with transaction details for verification and refund processing.
+
+In cases of duplicate or excess payments for the same transaction, customers may contact the support team with transaction details for verification and refund processing.
 
 7. Fraud Prevention & Compliance
-   PrimeGift.in reserves the right to hold, review, cancel, or reject transactions flagged as suspicious, high-risk, unauthorized, or non-compliant with payment gateway policies and applicable laws.
+
+PrimeGift.in reserves the right to review, delay, hold, reject, or cancel transactions flagged as suspicious, unauthorized, high-risk, fraudulent, or non-compliant with payment gateway policies or applicable laws.
 
 8. Customer Responsibility
-   Customers must provide accurate email addresses and mobile numbers while placing orders. PrimeGift.in shall not be responsible for delivery issues arising from incorrect information submitted by users.
 
-9. Contact Information
-   For payment, refund, or order-related support, customers may contact:
+Customers are responsible for providing accurate email addresses, mobile numbers, and payment details while placing orders.
 
-Email: [support@primegift.in](mailto:support@primegift.in)
+PrimeGift.in shall not be responsible for delivery issues or losses arising from incorrect information submitted by customers.
+
+9. Third-Party Brand Responsibility
+
+All gift cards, vouchers, trademarks, logos, and redemption services belong to their respective brands and partners.
+
+PrimeGift.in acts solely as a facilitator/reseller of digital vouchers and shall not be responsible for issues arising at the brand or merchant level after successful voucher delivery.
+
+10. Contact Information
+
+For order, payment, delivery, refund, or support-related queries, customers may contact:
+
+Support Email: support@primegift.in
 Phone: +91 9335960949
 
 Business Address:
-Behind Thana Puramufti,
-Prayagraj,
-Uttar Pradesh,
+Puramufti, Prayagraj
+Uttar Pradesh – 212208
 India
 `;
 

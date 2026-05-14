@@ -2,32 +2,52 @@ const faqData = [
   {
     question: "What is PrimeGift?",
     answer:
-      "PrimeGift is a digital platform that allows users to purchase brand vouchers and gift cards securely and use them on respective brand platforms."
+      "PrimeGift is a digital voucher distribution platform that allows users to purchase branded gift cards and prepaid vouchers securely through trusted payment methods."
   },
   {
     question: "How do I receive my voucher?",
     answer:
-      "After successful payment, vouchers are delivered digitally to your account instantly or within a few minutes."
+      "After successful payment verification, vouchers are delivered electronically through your registered email address, account dashboard, or registered contact details."
   },
   {
     question: "Are the vouchers genuine?",
     answer:
-      "Yes, all vouchers are sourced from authorized distributors and trusted partner networks."
+      "Yes. All vouchers and gift cards available on PrimeGift are sourced through trusted aggregators, distributors, and authorized partner networks."
+  },
+  {
+    question: "How long does delivery take?",
+    answer:
+      "Most orders are delivered instantly. In certain cases, delivery may take up to 24 hours due to payment verification, fraud prevention checks, or technical processing delays."
   },
   {
     question: "Can I cancel or refund my order?",
     answer:
-      "Once a voucher is delivered, it cannot be canceled or refunded. In case of payment failure, the amount is refunded within 5–7 business days."
+      "Due to the digital and instantly consumable nature of gift cards and vouchers, successfully delivered orders are non-refundable and non-cancellable. Failed or unsuccessful transactions are refunded within 5–7 business days subject to banking timelines."
   },
   {
     question: "What if my voucher does not work?",
     answer:
-      "You can contact our support team with your order details. We will verify and assist you accordingly."
+      "Customers may contact our support team with order details for verification and assistance. Resolution depends on successful validation with the respective voucher partner or brand."
   },
   {
-    question: "How can I contact support?",
+    question: "What payment methods are supported?",
     answer:
-      "You can reach us via email or phone as mentioned on the Contact Us page."
+      "PrimeGift supports secure online payments through authorized payment gateway providers including UPI, debit cards, credit cards, net banking, and other supported payment methods."
+  },
+  {
+    question: "Does PrimeGift store payment information?",
+    answer:
+      "No. PrimeGift does not store customers’ sensitive banking credentials, debit card PINs, credit card details, or UPI PIN information on its servers."
+  },
+  {
+    question: "Can my order be delayed or cancelled?",
+    answer:
+      "Yes. Orders may be delayed, reviewed, held, or cancelled if flagged as suspicious, high-risk, unauthorized, fraudulent, or non-compliant with payment gateway policies."
+  },
+  {
+    question: "How can I contact customer support?",
+    answer:
+      "Customers can contact PrimeGift support through the official support email or phone number mentioned on the Contact Us page."
   }
 ];
 
