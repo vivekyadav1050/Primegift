@@ -1,5 +1,5 @@
 const aboutContent = `
-PrimeGift is a digital voucher distribution platform designed to provide users with a secure, transparent, and reliable way to access branded digital gift cards and prepaid vouchers online.
+PrimeGift is operated by Daya Enterprises, a digital voucher distribution business focused on providing users with a secure, transparent, and reliable way to access branded digital gift cards and prepaid vouchers online.
 
 Our platform enables customers to purchase digital vouchers from a wide range of popular brands and redeem them directly on the respective brand platforms.
 
@@ -11,7 +11,7 @@ We aim to provide a smooth and trustworthy experience for customers purchasing b
 
 What We Do
 
-PrimeGift operates solely as a facilitator and reseller of digital vouchers sourced through trusted aggregators, distributors, and authorized partner networks.
+PrimeGift, operated under Daya Enterprises, acts solely as a facilitator and reseller of digital vouchers sourced through trusted aggregators, distributors, and authorized partner networks.
 
 Users can:
 
@@ -56,6 +56,9 @@ We are committed to providing timely and effective customer support regarding pu
 
 Support Email: support@primegift.in
 Phone: +91 9335960949
+
+Business Name:
+Daya Enterprises
 
 Business Address:
 Puramufti, Prayagraj
