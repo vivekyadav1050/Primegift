@@ -19,10 +19,8 @@ function MyOrders() {
     const fetchOrders = async () => {
       try {
         const res = await API.get("/api/primegift/my-orders-full");
-
         setOrders(res.data.orders || []);
         setLoading(false);
-
       } catch (err) {
         console.error(err);
         setLoading(false);
@@ -34,11 +32,9 @@ function MyOrders() {
 
   return (
     <div className="app-layout">
-      {/* Navbar */}
       <Navbar isOpen={isOpen} setIsOpen={setIsOpen} />
-
+      
       <div className="main-container">
-        {/* Sidebar */}
         <Sidebar
           isOpen={isOpen}
           setIsOpen={setIsOpen}
@@ -46,13 +42,15 @@ function MyOrders() {
           setActiveMenu={setActiveMenu}
         />
 
-        {/* Content */}
         <div className="content-area">
-          <h2 className="page-title"> My Orders</h2>
+          <div className="page-header">
+            <h1 className="page-title">My Orders</h1>
+            <p className="page-subtitle">Track and manage all your purchases</p>
+          </div>
 
           {loading && (
-            <div className="loading-wrapper">
-              <div className="modern-spinner"></div>
+            <div className="loading-state">
+              <div className="spinner"></div>
               <p>Loading your orders...</p>
             </div>
           )}
@@ -63,83 +61,91 @@ function MyOrders() {
                 <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 <circle cx="12" cy="16" r="1" />
               </svg>
-              <p>No orders found</p>
+              <h3>No orders yet</h3>
+              <p>When you make a purchase, your orders will appear here</p>
             </div>
           )}
 
-          {!loading &&
-            orders.map((o, i) => (
-              <div key={i} className="order-card">
-                {/* Brand */}
-                <div className="brand-row">
-                  <img src={o.brandImage} alt={o.brandName} />
-                  <h4>{o.brandName}</h4>
+          {!loading && orders.map((order, index) => (
+            <div key={index} className="order-card">
+              <div className="order-header">
+                <div className="brand-info">
+                  <img src={order.brandImage} alt={order.brandName} />
+                  <div>
+                    <h3>{order.brandName}</h3>
+                    <span className="order-id">Order #{order.id || index + 1}</span>
+                  </div>
+                </div>
+                <span className={`status-badge ${order.status.toLowerCase()}`}>
+                  {order.status}
+                </span>
+              </div>
+
+              <div className="order-details">
+                <div className="detail-row">
+                  <span className="detail-label">Amount Paid</span>
+                  <span className="detail-value">₹ {(order.amount / 100).toFixed(2)}</span>
                 </div>
 
-                {/* Order Info */}
-                <div className="row">
-                  <span>Amount Paid:</span>
-                  <span>₹ {(o.amount / 100).toFixed(2)}</span>
+                <div className="detail-row">
+                  <span className="detail-label">Order Date</span>
+                  <span className="detail-value">{new Date(order.createdAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}</span>
                 </div>
 
-                <div className="row">
-                  <span>Status:</span>
-                  <span className={`status ${o.status.toLowerCase()}`}>
-                    {o.status}
-                  </span>
-                </div>
-
-                <div className="row">
-                  <span>Date:</span>
-                  <span>{new Date(o.createdAt).toLocaleString()}</span>
-                </div>
-
-                {/* STATUS HANDLING */}
-                {o.status === "PROCESSING" && (
-                  <p className="processing">⏳ Generating voucher...</p>
+                {order.status === "PROCESSING" && (
+                  <div className="message processing">
+                    <span>⏳ Generating voucher</span>
+                  </div>
                 )}
 
-                {o.status === "FAILED" && (
-                  <p className="failed">❌ Failed / Refunded</p>
-                )}
-
-                {o.status === "SUCCESS" && (
-                  <div className="voucher-list">
-                    {o.vouchers.map((v, idx) => (
-                      <div key={idx} className="voucher-card">
-                        <div className="row">
-                          <span>Code:</span>
-                          <span className="voucher-code">{v.code}</span>
-                        </div>
-
-                        <div className="row">
-                          <span>Voucher Value:</span>
-                          <span>₹ {(v.amount / 100).toFixed(2)}</span>
-                        </div>
-
-                        <PinReveal pin={v.pin} />
-                      </div>
-                    ))}
+                {order.status === "FAILED" && (
+                  <div className="message failed">
+                    <span>❌ Payment failed or refunded</span>
                   </div>
                 )}
               </div>
-            ))}
+
+              {order.status === "SUCCESS" && order.vouchers.length > 0 && (
+                <div className="vouchers-section">
+                  <h4>Vouchers</h4>
+                  {order.vouchers.map((voucher, idx) => (
+                    <div key={idx} className="voucher-item">
+                      <div className="voucher-info">
+                        <div className="info-row">
+                          <span className="label">Code</span>
+                          <span className="code">{voucher.code}</span>
+                        </div>
+                        <div className="info-row">
+                          <span className="label">Value</span>
+                          <span className="value">₹ {(voucher.amount / 100).toFixed(2)}</span>
+                        </div>
+                        <PinReveal pin={voucher.pin} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 }
 
-/* 🔐 PIN Toggle - Modern but simple */
 function PinReveal({ pin }) {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="pin-row">
-      <span>PIN:</span>
-      <div className="pin-controls">
+    <div className="pin-section">
+      <span className="pin-label">PIN</span>
+      <div className="pin-wrapper">
         <span className="pin-value">{show ? pin : "••••••"}</span>
-        <button className="pin-btn" onClick={() => setShow(!show)}>
+        <button className="pin-toggle" onClick={() => setShow(!show)}>
           {show ? "Hide" : "Show"}
         </button>
       </div>

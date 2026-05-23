@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import aboutContent from "../content/Aboutus";
-import "../styles/aboutus.css";
+import "../styles/Aboutus.css";
 
 function About() {
   const [isOpen, setIsOpen] = useState(false);

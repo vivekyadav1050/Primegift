@@ -15,7 +15,7 @@ export default function GiftCardDetail({ data }) {
   const [loadingStep, setLoadingStep] = useState("");
 
   const [selectedAmount, setSelectedAmount] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("UPI");
+  // const [paymentMethod, setPaymentMethod] = useState("UPI");
 
   useEffect(() => {
     if (data) {
@@ -36,15 +36,19 @@ export default function GiftCardDetail({ data }) {
   const isValid = isFixed || (!isEmpty && !isInvalid);
 
   const baseDiscount = data.discountPercent || 0;
-  const discountPercent = paymentMethod === "UPI" || paymentMethod === "e-Pay" ? baseDiscount : Math.max(baseDiscount - 1, 0);
+  // const discountPercent = paymentMethod === "UPI" || paymentMethod === "e-Pay" ? baseDiscount : Math.max(baseDiscount - 1, 0);
+  const discountPercent = baseDiscount;
   const numericAmount = selectedAmount === "" ? 0 : selectedAmount;
   const discountValue = Number(((numericAmount * discountPercent) / 100).toFixed(2));
   const finalPrice = Number((numericAmount - discountValue).toFixed(2));
 
-  let methodConfig = { upi: false, card: false, netbanking: false, wallet: false };
-  if (paymentMethod === "UPI") methodConfig.upi = true;
-  if (paymentMethod === "Credit Card" || paymentMethod === "Debit Card") methodConfig.card = true;
-  if (paymentMethod === "e-Pay") methodConfig.netbanking = true;
+    let methodConfig = {
+      upi: true,
+      card: false,
+      netbanking: false,
+      wallet: false
+    };
+
 
   const handleBuyNow = async () => {
     const token = localStorage.getItem("token");
@@ -66,7 +70,7 @@ export default function GiftCardDetail({ data }) {
       const res = await API.post("/api/primegift/createorder", {
         brandId: data.brandId,
         amount: numericAmount,
-        paymentMethod: paymentMethod,
+        paymentMethod: "UPI",
         payingAmount: finalPrice
       }, {
         headers: { Authorization: `Bearer ${token}` }
@@ -78,7 +82,8 @@ export default function GiftCardDetail({ data }) {
       setLoadingStep("Waiting for Payment...");
 
       const options = {
-        key: "rzp_test_SVsSowcpInkLUC",
+        key: "rzp_live_SlMz5voz3CXR2c",
+        
         amount,
         currency,
         order_id: razorpayOrderId,
@@ -99,6 +104,7 @@ export default function GiftCardDetail({ data }) {
             navigate(`/my_vouchers?orderId=${orderId}`);
           } catch {
             setLoading(false);
+            console.API.error("Payment verification failed", err);
             alert("Payment verification failed ❌");
           }
         }
@@ -160,31 +166,30 @@ export default function GiftCardDetail({ data }) {
           <div className="info-card">
             <h1 className="product-name">{data.name}</h1>
             <div className="product-meta">
-              <div className="rating">
-                <span className="stars">★★★★★</span>
-                <span className="rating-count">4.8 (2.3k reviews)</span>
-              </div>
+        
             </div>
 
             {/* How to Use */}
-            {data.howToUse?.length > 0 && (
-              <div className="info-section">
-                <h3>How to Use</h3>
-                {data.howToUse.map((item, i) => (
-                  <div key={i} className="howto-item">
-                    <div className="icon">✓</div>
-                    <div className="content">
-                      <strong>{item.retailModeName}</strong>
-                      <ul>
-                        {item.instructions?.map((step, j) => (
-                          <li key={j}>{step}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+         {data.usageInstructions && (
+  <div className="info-section">
+    <h3>How to Use</h3>
+
+    {Object.entries(data.usageInstructions).map(([mode, steps], i) => (
+      <div key={i} className="howto-item">
+        <div className="icon">✓</div>
+        <div className="content">
+          <strong>{mode}</strong>
+          <ul>
+            {steps.map((step, j) => (
+              <li key={j}>{step}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+
 
             {/* Terms & Conditions */}
             {data.termsAndConditions?.length > 0 && (
@@ -198,11 +203,7 @@ export default function GiftCardDetail({ data }) {
               </div>
             )}
 
-            {data.tncUrl && (
-              <a href={data.tncUrl} target="_blank" rel="noreferrer" className="tnc-link">
-                View Full Terms & Conditions →
-              </a>
-            )}
+         
           </div>
         </div>
 
@@ -264,26 +265,17 @@ export default function GiftCardDetail({ data }) {
           {/* Payment Methods */}
           <div className="selection-group">
             <label>Payment Method</label>
-            <div className="payment-methods">
-              {[
-                { name: "UPI", icon: "📱", discount: `${data.discountPercent || 0}% off` },
-                { name: "Credit Card", icon: "💳", discount: `${Math.max((data.discountPercent || 0) - 1, 0)}% off` },
-                { name: "Debit Card", icon: "💳", discount: `${Math.max((data.discountPercent || 0) - 1, 0)}% off` },
-                { name: "e-Pay", icon: "🏦", discount: `${data.discountPercent || 0}% off` }
-              ].map((method) => (
-                <div
-                  key={method.name}
-                  className={`payment-method ${paymentMethod === method.name ? "active" : ""}`}
-                  onClick={() => setPaymentMethod(method.name)}
-                >
-                  <div className="method-info">
-                    <span className="method-icon">{method.icon}</span>
-                    <span className="method-name">{method.name}</span>
-                  </div>
-                  <span className="method-discount">{method.discount}</span>
-                </div>
-              ))}
+          <div className="payment-methods">
+          <div className="payment-method active">
+            <div className="method-info">
+              <span className="method-icon">📱</span>
+              <span className="method-name">UPI</span>
             </div>
+            <span className="method-discount">
+              {data.discountPercent || 0}% off
+            </span>
+          </div>
+        </div>
           </div>
 
           {/* Price Breakdown */}

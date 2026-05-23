@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
-import contactContent from "../content/contactus";
+import contactContent from "../content/Contactus";
 import "../styles/Contactus.css";
 
 function Contact() {

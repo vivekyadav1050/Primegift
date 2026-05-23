@@ -1,9 +1,14 @@
-/* Myorder.css - Modern minimal changes, same colors */
+/* Myorder.css - Modern US Design */
 
-/* Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .app-layout {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  background: #f7f9fc;
 }
 
 .main-container {
@@ -14,216 +19,285 @@
 .content-area {
   flex: 1;
   padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-/* Page Title - Same style */
+/* Page Header */
+.page-header {
+  margin-bottom: 2rem;
+}
+
 .page-title {
-  font-size: 1.75rem;
+  font-size: 1.875rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: #0f172a;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
-/* Order Card - Your original style with slight modern touch */
+.page-subtitle {
+  font-size: 0.875rem;
+  color: #6c757d;
+  font-weight: 400;
+}
+
+/* Order Card */
 .order-card {
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e9ecef;
+  overflow: hidden;
   transition: all 0.2s ease;
-  border: 1px solid #f0f0f0;
 }
 
 .order-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-color: #dee2e6;
 }
 
-/* Brand Row - Same */
-.brand-row {
+/* Order Header */
+.order-header {
+  padding: 1.5rem;
+  background: white;
+  border-bottom: 1px solid #f1f3f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand-info {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #eef2ff;
+  gap: 1rem;
 }
 
-.brand-row img {
-  width: 44px;
-  height: 44px;
+.brand-info img {
+  width: 48px;
+  height: 48px;
   object-fit: contain;
-  background: #f8fafc;
-  border-radius: 10px;
-  padding: 4px;
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 }
 
-.brand-row h4 {
-  font-size: 1.1rem;
+.brand-info h3 {
+  font-size: 1.125rem;
   font-weight: 600;
-  color: #0f172a;
-  margin: 0;
+  color: #212529;
+  margin-bottom: 0.25rem;
 }
 
-/* Info Rows - Same spacing */
-.row {
+.order-id {
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+/* Status Badge */
+.status-badge {
+  padding: 0.375rem 0.875rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.status-badge.success {
+  background: #d3f9d8;
+  color: #2b8a3e;
+}
+
+.status-badge.processing {
+  background: #fff3bf;
+  color: #e67700;
+}
+
+.status-badge.failed {
+  background: #ffe3e3;
+  color: #c92a2a;
+}
+
+/* Order Details */
+.order-details {
+  padding: 1.5rem;
+  background: #fafbfc;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.detail-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
+  padding: 0.5rem 0;
 }
 
-.row span:first-child {
+.detail-row:first-child {
+  padding-top: 0;
+}
+
+.detail-row:last-child {
+  padding-bottom: 0;
+}
+
+.detail-label {
+  font-size: 0.875rem;
   font-weight: 500;
-  color: #64748b;
+  color: #6c757d;
+}
+
+.detail-value {
   font-size: 0.875rem;
+  font-weight: 600;
+  color: #212529;
 }
 
-.row span:last-child {
-  font-weight: 600;
-  color: #0f172a;
+/* Messages */
+.message {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e9ecef;
   font-size: 0.875rem;
+  font-weight: 500;
 }
 
-/* Status Colors - Your original colors */
-.status {
-  font-weight: 600;
+.message.processing {
+  color: #e67700;
 }
 
-.status.success {
-  color: #22c55e;
+.message.failed {
+  color: #c92a2a;
 }
 
-.status.failed {
-  color: #ef4444;
+/* Vouchers Section */
+.vouchers-section {
+  padding: 1.5rem;
 }
 
-.status.processing {
-  color: #f97316;
-}
-
-/* Processing & Failed Messages - Your colors */
-.processing {
-  color: #f97316;
-  font-weight: 600;
+.vouchers-section h4 {
   font-size: 0.875rem;
-  margin-top: 12px;
-  padding-top: 8px;
-  border-top: 1px solid #fef3c7;
-}
-
-.failed {
-  color: #ef4444;
   font-weight: 600;
-  font-size: 0.875rem;
-  margin-top: 12px;
-  padding-top: 8px;
-  border-top: 1px solid #fee2e2;
-}
-
-/* Voucher Card - Your original style refined */
-.voucher-list {
-  margin-top: 16px;
-}
-
-.voucher-card {
-  background: #f8fafc;
-  padding: 14px;
-  margin-top: 12px;
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
-  transition: all 0.2s ease;
-}
-
-.voucher-card:first-child {
-  margin-top: 8px;
-}
-
-.voucher-card:hover {
-  border-color: #cbd5e1;
-  background: #f1f5f9;
-}
-
-/* Voucher Code Styling */
-.voucher-code {
-  font-family: 'Courier New', monospace;
-  font-weight: 700;
+  color: #495057;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #1e293b;
 }
 
-/* PIN Row - Modernized */
-.pin-row {
+.voucher-item {
+  background: #f8f9fa;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid #e9ecef;
+}
+
+.voucher-item:last-child {
+  margin-bottom: 0;
+}
+
+.voucher-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.info-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 12px;
-  margin-top: 8px;
-  border-top: 1px solid #e2e8f0;
 }
 
-.pin-row > span:first-child {
+.info-row .label {
+  font-size: 0.75rem;
   font-weight: 500;
-  color: #64748b;
-  font-size: 0.875rem;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.pin-controls {
+.info-row .code {
+  font-family: 'SF Mono', 'Courier New', monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #212529;
+  letter-spacing: 0.5px;
+}
+
+.info-row .value {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #2b8a3e;
+}
+
+/* PIN Section */
+.pin-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  margin-top: 0.25rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.pin-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pin-wrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .pin-value {
-  font-family: 'Courier New', monospace;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #1e293b;
+  font-family: 'SF Mono', 'Courier New', monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #212529;
+  letter-spacing: 1px;
 }
 
-/* PIN Button - Your green color but modernized */
-.pin-btn {
-  margin-left: 0;
-  padding: 4px 12px;
+.pin-toggle {
+  background: none;
   border: none;
-  background: #22c55e;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
+  color: #4c6ef5;
   font-size: 0.75rem;
   font-weight: 500;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
   transition: all 0.2s ease;
 }
 
-.pin-btn:hover {
-  background: #16a34a;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(34, 197, 94, 0.3);
+.pin-toggle:hover {
+  background: #f1f3f5;
+  color: #3b5bdb;
 }
 
-.pin-btn:active {
-  transform: translateY(0);
-}
-
-/* Loading State - Modern minimal */
-.loading-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem;
+/* Loading State */
+.loading-state {
   text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid #e9ecef;
 }
 
-.modern-spinner {
+.spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid #e2e8f0;
-  border-top-color: #3b82f6;
+  margin: 0 auto 1rem;
+  border: 3px solid #e9ecef;
+  border-top-color: #4c6ef5;
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
-  margin-bottom: 1rem;
 }
 
 @keyframes spin {
@@ -232,33 +306,38 @@
   }
 }
 
-.loading-wrapper p {
-  color: #64748b;
+.loading-state p {
+  color: #6c757d;
   font-size: 0.875rem;
 }
 
-/* Empty State - Modern minimal */
+/* Empty State */
 .empty-state {
   text-align: center;
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 1rem;
+  border: 1px solid #e9ecef;
 }
 
 .empty-icon {
   width: 64px;
   height: 64px;
-  stroke: #94a3b8;
+  margin: 0 auto 1rem;
+  stroke: #adb5bd;
   stroke-width: 1.5;
-  margin-bottom: 1rem;
-  opacity: 0.7;
+}
+
+.empty-state h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.5rem;
 }
 
 .empty-state p {
-  font-size: 1rem;
-  color: #64748b;
-  font-weight: 500;
+  font-size: 0.875rem;
+  color: #6c757d;
 }
 
 /* Responsive */
@@ -271,52 +350,50 @@
     font-size: 1.5rem;
   }
   
-  .order-card {
-    padding: 16px;
-  }
-  
-  .row {
+  .order-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
   }
   
-  .pin-row {
+  .detail-row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 0.25rem;
   }
   
-  .pin-controls {
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .pin-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .pin-wrapper {
     width: 100%;
     justify-content: space-between;
   }
 }
 
-@media (max-width: 480px) {
-  .voucher-card {
-    padding: 12px;
-  }
-  
-  .pin-value {
-    font-size: 0.75rem;
-  }
+/* Clean modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .order-card,
-  .pin-btn,
-  .modern-spinner {
-    animation: none;
-    transition: none;
-  }
-  
-  .order-card:hover {
-    transform: none;
-  }
-  
-  .pin-btn:hover {
-    transform: none;
-  }
+::-webkit-scrollbar-track {
+  background: #f1f3f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #adb5bd;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #868e96;
 }

@@ -60,7 +60,7 @@ function Home() {
         id: item.id || item.brandId,
         offer:
           item.discount >= 10
-            ? `🔥 ${item.discount}% OFF`
+            ? ` ${item.discount}% OFF`
             : `${item.discount}% OFF`
       }));
 

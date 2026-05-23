@@ -1,5 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -11,35 +13,60 @@ import About from "./pages/Aboutus";
 import Contact from "./pages/Contactus";
 import Faq from "./pages/Faq";
 import Privacy from "./pages/Privacy";
+import Terms from "./pages/Termandcondition";
+import RefundPolicy from "./pages/Refundpolicy";
 
+import ProtectedRoute from "./components/ProtectedRoute";
+import ForgotPassword from "./pages/Forgetpassword";
+import ResetPassword from "./pages/Resetpassword";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+    <Routes>
+      <Route path="/" element={<Home />} />
 
-         <Route path="/register" element={<Register />} />
-          <Route path="/otp" element={<Otp/>} />
+      <Route path="/login" element={<Login />} />
 
-          <Route path="/product/:id" element={<Cardetail/>} />
-          <Route path="/my_vouchers" element={<Myvoucher />} />   
-          <Route path="/Myorder" element={<MyOrders />} />   
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/privacy" element={<Privacy />} />
-          {/* <Route path="/terms" element={<div>Terms of Use Page</div>} />
-          <Route path="/loyalty" element={<div>Loyalty Program Page</div>} />
-          <Route path="/sitemap" element={<div>Site Map Page</div>} />
-          <Route path="/offers" element={<div>Offer Terms Page</div>} /> */}
+      <Route path="/register" element={<Register />} />
 
+      <Route path="/forgot-password" element={<ForgotPassword />} />
 
+      <Route path="/otp" element={<Otp/>} />
 
-             
-      </Routes>
-    </Router>
+      <Route path="/reset-password" element={<ResetPassword />} />
+
+      <Route path="/product/:id" element={<Cardetail />} />
+
+      <Route
+        path="/my_vouchers"
+        element={
+          <ProtectedRoute>
+            <Myvoucher />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/Myorder"
+        element={
+          <ProtectedRoute>
+            <MyOrders />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route path="/about" element={<About />} />
+
+      <Route path="/contact" element={<Contact />} />
+
+      <Route path="/faq" element={<Faq />} />
+
+      <Route path="/privacy" element={<Privacy />} />
+      
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/refund" element={<RefundPolicy/>} />
+
+    </Routes>
   );
 }
 

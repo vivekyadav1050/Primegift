@@ -1,36 +1,68 @@
-const privacyContent = `
-PrimeGift values your privacy and is committed to protecting your personal information.
+const refundContent = `
+PrimeGift.in is a digital voucher distribution platform that facilitates the purchase and delivery of branded digital gift cards and prepaid vouchers sourced through trusted aggregators, distributors, and authorized partner networks.
 
-Information We Collect
-We may collect personal details such as name, email address, phone number, and transaction details when you use our platform.
+1. Nature of Products
 
-How We Use Information
-The collected data is used for:
-- Account creation and management
-- Processing transactions
-- Providing customer support
-- Improving our services
+All products sold on PrimeGift.in are digital prepaid instruments and gift vouchers delivered electronically after successful payment confirmation.
 
-Payment Security
-All payments are processed securely through trusted third-party payment gateways such as Razorpay. We do not store your card or payment details on our servers.
+2. Authorized Sourcing
 
-Data Sharing
-We do not sell or rent your personal information. Data may be shared with trusted service providers only for transaction processing or as required by law.
+PrimeGift.in procures gift cards and vouchers only from trusted aggregators, distributors, and authorized partner networks.
 
-Data Protection
-We implement appropriate security measures to protect your data from unauthorized access, misuse, or disclosure.
+PrimeGift.in does not independently generate, manufacture, or issue unauthorized gift cards or prepaid vouchers.
 
-Cookies
-Our platform may use cookies to enhance user experience and improve functionality.
+3. Shipping & Delivery
 
-User Consent
-By using PrimeGift, you agree to the collection and use of your information as described in this policy.
+Orders are processed instantly or within the timelines specified on the platform after successful payment verification.
 
-Policy Updates
-We may update this Privacy Policy from time to time. Users are advised to review this page periodically.
+Most digital vouchers are delivered instantly. In certain situations, delivery may take up to 24 hours due to:
 
-Contact
-For any privacy-related concerns, please contact us through the Contact Us page.
+* Payment verification
+* Fraud prevention checks
+* Technical processing delays
+* Partner-side processing
+
+Delivery is completed electronically through the customer’s registered email address, dashboard, or registered contact details.
+
+4. Refund & Cancellation
+
+Due to the instantly consumable and digital nature of gift cards and vouchers, all successfully delivered orders are non-returnable, non-refundable, and non-cancellable.
+
+5. Failed or Pending Transactions
+
+If payment is deducted but the order is not successfully processed or delivered, the deducted amount shall be refunded automatically to the original payment source within 5–7 business days, subject to banking timelines.
+
+6. Duplicate Payments
+
+In cases of duplicate or excess payments for the same transaction, customers may contact the support team with transaction details for verification and refund processing.
+
+7. Fraud Prevention & Compliance
+
+PrimeGift.in reserves the right to review, delay, hold, reject, or cancel transactions flagged as suspicious, unauthorized, high-risk, fraudulent, or non-compliant with payment gateway policies or applicable laws.
+
+8. Customer Responsibility
+
+Customers are responsible for providing accurate email addresses, mobile numbers, and payment details while placing orders.
+
+PrimeGift.in shall not be responsible for delivery issues or losses arising from incorrect information submitted by customers.
+
+9. Third-Party Brand Responsibility
+
+All gift cards, vouchers, trademarks, logos, and redemption services belong to their respective brands and partners.
+
+PrimeGift.in acts solely as a facilitator/reseller of digital vouchers and shall not be responsible for issues arising at the brand or merchant level after successful voucher delivery.
+
+10. Contact Information
+
+For order, payment, delivery, refund, or support-related queries, customers may contact:
+
+Support Email: support@primegift.in
+Phone: +91 9335960949
+
+Business Address:
+Puramufti, Prayagraj
+Uttar Pradesh – 212208
+India
 `;
 
-export default privacyContent;
+export default refundContent;
