@@ -30,6 +30,7 @@ function Navbar({ setIsOpen, isOpen }) {
             <span className="menu-line top"></span>
             <span className="menu-line middle"></span>
             <span className="menu-line bottom"></span>
+            
           </div>
         </button>
 
@@ -74,5 +75,6 @@ function Navbar({ setIsOpen, isOpen }) {
     </nav>
   );
 }
+// here export navbar
 
-export default Navbar;
+export default Navbar
